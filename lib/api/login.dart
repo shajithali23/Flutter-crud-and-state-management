@@ -1,9 +1,12 @@
 import 'dart:convert';
 
 import 'package:firebase_crud/api/home.dart';
+import 'package:firebase_crud/api/registration.dart';
 import 'package:firebase_crud/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+
+import 'jdon_display.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -27,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> login() async {
-    String url = "https://api.qbace.in/api/login";
+    String url = "http://192.168.29.80/qbase-api/api/login";
     var res = await http.post(Uri.parse(url),
         body: {"email": _name.text, "password": _password.text});
     print(res.statusCode);
@@ -67,6 +70,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   login();
                 },
                 child: const Text("Login")),
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => UsersScreen()));
+                },
+                child: Text("Sign Up"))
           ],
         ),
       )),
