@@ -17,6 +17,11 @@ class StartApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          appBarTheme: AppBarTheme(
+        color: Color.fromARGB(255, 238, 237, 241),
+      )),
       home: StartPage(),
     );
   }

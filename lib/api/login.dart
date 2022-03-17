@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:firebase_crud/api/home.dart';
 import 'package:firebase_crud/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -34,6 +35,10 @@ class _LoginScreenState extends State<LoginScreen> {
     print(response);
     if (response['success'] == true) {
       print("LOGIN");
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => ApiHomeScreen(
+                response: response,
+              )));
     } else {
       print("FAILED");
     }
